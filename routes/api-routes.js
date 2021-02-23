@@ -1,3 +1,6 @@
+const dotenv = require ('dotenv')
+dotenv.config();
+
 db.connect (process.env.CONNECTIONSTRING, async function () {
 	const db = client.db ()
 	const results = await db.collections ( "workouts" )
