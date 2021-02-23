@@ -5,9 +5,10 @@ const Workout = require("../models/workouts.js");
 module.exports = function(app) {
 
 	app.get("/api/workouts", (request, response) => {
+		console.log(Workout);
 		Workout.find()
 		  .then(allWorkouts => {
-			  console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+			  console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', allWorkouts);
 			response.json(allWorkouts);
 		  })
 		  .catch(err => {
