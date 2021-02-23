@@ -6,7 +6,7 @@ const ExerciseSchema = new Schema(
 		name: { type: String },
 		type: {
 			type: String,
-			enum: ['Coffee', 'Tea']
+			enum: ['cardio', 'resistance']
 			},
 		weight: {type: Number},
 		sets: {type: Number},
