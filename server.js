@@ -17,15 +17,12 @@ const collections = ["workouts"];
 
 require("./routes/api-routes.js")(app);
 
-await mongoose.connect(CONNECTIONSTRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
+mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log('mongoose connection working');
 });
-// db.on("error", error => {
-//   console.log("Database Error:", error);
-// });
 
 app.listen(3000, () => {
   console.log("App running on port 3000!");
