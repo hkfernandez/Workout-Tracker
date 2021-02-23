@@ -12,8 +12,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const databaseUrl = "exerciseDb";
-const collections = ["Workout"];
+const databaseUrl = "workoutdb";
+const collections = ["workouts"];
 
 require("./routes/api-routes.js")(app);
 
