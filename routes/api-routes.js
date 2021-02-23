@@ -9,7 +9,19 @@ dotenv.config();
 // 	expressionUsingResult
 // 	})
 
+
+
 module.exports = function(app) {
+
+	app.post("/submit", ({body}, res) => {
+		User.create(body)
+		  .then(dbUser => {
+			res.json(dbUser);
+		  })
+		  .catch(err => {
+			res.json(err);
+		  });
+	  });
 	
 	const API = {
 	async getLastWorkout() {
