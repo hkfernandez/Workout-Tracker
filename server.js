@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const databaseUrl = "exerciseDb";
-const collections = ["workouts"];
+const collections = ["Workout"];
 
 require("./routes/api-routes.js")(app);
 
