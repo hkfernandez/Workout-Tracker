@@ -145,6 +145,7 @@ if (completeButton) {
   completeButton.addEventListener("click", function (event) {
     shouldNavigateAway = true;
     handleFormSubmit(event);
+	// location.href = "/"
 	console.log(event);
   });
 }

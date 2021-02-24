@@ -1,71 +1,20 @@
 const dotenv = require('dotenv')
 dotenv.config();
+const path = require ('path')
 const Workout = require("../models/workouts.js");
 
 module.exports = function (app) {
 
 	app.get("/exercise",
 		(request, response) => {
-			console.log('EXERCISE ROUTE HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-			response.redirect('exercise.html');
+			response.sendFile(path.join(__dirname, "../public/exercise.html"));
 		}
 
 	);
 
 	app.get("/stats",
 		(request, response) => {
-			response.redirect('stats.html');
+			response.sendFile(path.join(__dirname, "../public/stats.html"));
 		}
 	);
-
-	// app.put("/api/workouts/:id", 
-	// 	(request, response) => {
-	// 		let workoutId = request.params
-	// 		let newExercise = request.body
-	// 		console.log(workoutId);
-	// 		console.log(newExercise);
-	// 		Workout.findOneAndUpdate({_id: workoutId}, { $push: { exercises: newExercise} }, { new: true })
-	// 		.then(
-	// 			updatedWorkout => {
-	// 				response.json(updatedWorkout);
-	// 			}
-	// 		)
-	// 		.catch(
-	// 			err => {
-	// 				console.log('WORKOUTS ROUTES HIT WITH ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-	// 				response.json(err);
-	// 			}
-	// 		);
-	//   	}
-	// );
-
-	// 	const res = await fetch("/api/workouts/" + id, {
-	// 	method: "PUT",
-	// 	headers: { "Content-Type": "application/json" },
-	// 	body: JSON.stringify(data)
-	// 	});
-
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-	// async createWorkout(data = {}) {
-	// 	const res = await fetch("/api/workouts", {
-	// 	method: "POST",
-	// 	body: JSON.stringify(data),
-	// 	headers: { "Content-Type": "application/json" }
-	// 	});
-
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-
-	// async getWorkoutsInRange() {
-	// 	const res = await fetch(`/api/workouts/range`);
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-	// };
 }
