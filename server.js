@@ -16,7 +16,7 @@ const databaseUrl = "workoutdb";
 // const collections = ["workouts"];
 
 require("./routes/api-routes.js")(app);
-require("./routes/HTML-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/"+databaseUrl, { useNewUrlParser: true });
 mongoose.connect(
