@@ -25,6 +25,7 @@ async function initExercise() {
     console.log(workout)
   }
   if (workout) {
+    console.log(workout)
     location.search = "?id=" + workout._id;
   }
 
@@ -144,6 +145,7 @@ if (completeButton) {
   completeButton.addEventListener("click", function (event) {
     shouldNavigateAway = true;
     handleFormSubmit(event);
+	console.log(event);
   });
 }
 if (addButton) {

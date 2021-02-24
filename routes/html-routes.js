@@ -1,15 +1,21 @@
-const dotenv = require ('dotenv')
+const dotenv = require('dotenv')
 dotenv.config();
 const Workout = require("../models/workouts.js");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-	app.get("/exercise", 
+	app.get("/exercise",
 		(request, response) => {
 			console.log('EXERCISE ROUTE HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 			response.redirect('exercise.html');
 		}
-	
+
+	);
+
+	app.get("/stats",
+		(request, response) => {
+			response.redirect('stats.html');
+		}
 	);
 
 	// app.put("/api/workouts/:id", 
@@ -32,7 +38,7 @@ module.exports = function(app) {
 	// 		);
 	//   	}
 	// );
-	
+
 	// 	const res = await fetch("/api/workouts/" + id, {
 	// 	method: "PUT",
 	// 	headers: { "Content-Type": "application/json" },
