@@ -6,10 +6,19 @@ module.exports = function(app) {
 
 	app.get("/api/workouts", 
 		(request, response) => {
-			Workout.find({})
+			Workout.aggregate( 
+				[
+					{
+						$addFields: {
+							totalDuration: { $sum: "$exercises.duration" }
+						}
+					}
+				]
+			)
 			.then(
 				allWorkouts => {
-				//   console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', allWorkouts);
+				console.log('ALL WORKOUTS ',allWorkouts);
+					//   console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', allWorkouts);
 				response.json(allWorkouts);
 				}
 			)
@@ -47,7 +56,15 @@ module.exports = function(app) {
 	
 	app.get("/api/workouts/range", 
 		(request, response) => {
-			Workout.find()
+			Workout.aggregate( 
+				[
+					{
+						$addFields: {
+							totalDuration: { $sum: "$exercises.duration" }
+						}
+					}
+				]
+			)
 			.then(
 				allWorkouts => {
 					let lastSevenWorkouts = allWorkouts.splice(allWorkouts.length-7, 7);
@@ -80,34 +97,4 @@ module.exports = function(app) {
 			);
 	  	}
 	);
-	
-	// 	const res = await fetch("/api/workouts/" + id, {
-	// 	method: "PUT",
-	// 	headers: { "Content-Type": "application/json" },
-	// 	body: JSON.stringify(data)
-	// 	});
-
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-	// async createWorkout(data = {}) {
-	// 	const res = await fetch("/api/workouts", {
-	// 	method: "POST",
-	// 	body: JSON.stringify(data),
-	// 	headers: { "Content-Type": "application/json" }
-	// 	});
-
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-
-	// async getWorkoutsInRange() {
-	// 	const res = await fetch(`/api/workouts/range`);
-	// 	const json = await res.json();
-
-	// 	return json;
-	// },
-	// };
-}
+	}
