@@ -21,6 +21,8 @@ In the navbar, you can select your dashboard to see your progress over time up t
 ## Credits
 I worked on the routes for this project connecting the fronted with the [mongo database](https://www.mongodb.com/). [Mongoose](https://mongoosejs.com/) was used to create the ORM. The server was created with [Express}(http://expressjs.com/). All code is Javascript on both the front and backend.
 
+I would be remiss if I did not mention [Seth Zygarlicke](https://github.com/ElderBass) for help with clearing roadblocks when it came to database connections and routes. You should stop by his repo - smart guy.
+
 ## License
 MIT
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
