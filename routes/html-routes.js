@@ -17,4 +17,10 @@ module.exports = function (app) {
 			response.sendFile(path.join(__dirname, "../public/stats.html"));
 		}
 	);
+
+	app.get("/",
+		(request, response) => {
+			response.sendFile(path.join(__dirname, "../public/index.html"));
+		}
+	);
 }

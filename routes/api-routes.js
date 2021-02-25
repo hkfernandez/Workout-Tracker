@@ -17,14 +17,11 @@ module.exports = function(app) {
 			)
 			.then(
 				allWorkouts => {
-				console.log('ALL WORKOUTS ',allWorkouts);
-					//   console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', allWorkouts);
 				response.json(allWorkouts);
 				}
 			)
 			.catch(
 				err => {
-				// console.log('WORKOUTS ROUTES HIT WITH ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 				response.json(err);
 			}
 			);
@@ -33,13 +30,11 @@ module.exports = function(app) {
 
 	app.post("/api/workouts", 
 		({body}, response) => {
-			//let workoutData = request.body
-			console.log("console log of {body} in api/workouts routes = ", body);
+			// console.log("console log of {body} in api/workouts routes = ", body);
 			Workout.create(body)
 			.then(
 				newWorkout => {
-				  console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-				console.log(newWorkout);
+				  console.log('WORKOUTS ROUTES HIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', newWorkout);
 				response.json(newWorkout);
 				}
 			)
@@ -68,7 +63,7 @@ module.exports = function(app) {
 			.then(
 				allWorkouts => {
 					let lastSevenWorkouts = allWorkouts.splice(allWorkouts.length-7, 7);
-					console.log('LAST SEVEN WORKOUTS',lastSevenWorkouts);
+					// console.log('LAST SEVEN WORKOUTS',lastSevenWorkouts);
 				response.json(lastSevenWorkouts);
 				}
 			)
@@ -80,21 +75,23 @@ module.exports = function(app) {
 		(request, response) => {
 			let workoutId = request.params.id
 			let newExercise = request.body
-			console.log('PARAMS')
-			console.log(workoutId);
-			console.log(newExercise);
+			// console.log('PARAMS')
+			// console.log(workoutId);
+			// console.log(newExercise);
 			Workout.findOneAndUpdate({_id: workoutId}, { $push: { exercises: newExercise} }, { new: true })
 			.then(
 				updatedWorkout => {
+					console.log('WORKOUTS ROUTES HIT ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', updatedWorkout);
+
 					response.json(updatedWorkout);
 				}
 			)
 			.catch(
 				err => {
-					console.log('WORKOUTS ROUTES HIT WITH ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+					// console.log('WORKOUTS ROUTES HIT WITH ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 					response.json(err);
 				}
 			);
 	  	}
 	);
-	}
+}
