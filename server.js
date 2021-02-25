@@ -1,26 +1,21 @@
 const express = require("express");
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+
 const mongoose = require('mongoose');
 
 const logger = require("morgan");
-
-const PORT = process.env.PORT || 3000
-
-const app = express();
-
 app.use(logger("dev"));
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use(express.static("public"));
-
-const databaseUrl = "workoutdb";
+const PORT = process.env.PORT || 3000
 
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
 mongoose.connect(
-	process.env.MONGODB_URI || 'mongodb://localhost/'+databaseUrl,
+	process.env.MONGODB_URI || 'mongodb://localhost/workoutdb',
 	{
 	  useNewUrlParser: true,
 	  useUnifiedTopology: true,
